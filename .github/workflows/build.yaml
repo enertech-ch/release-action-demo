@@ -22,3 +22,4 @@ jobs:
         with:
           name: build-output-${{ inputs.target-env }}
           path: ${{ github.workspace }}
+          retention-days: 2
