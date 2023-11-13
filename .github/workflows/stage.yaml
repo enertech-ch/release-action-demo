@@ -15,7 +15,7 @@ jobs:
     uses: ./.github/workflows/test.yaml
 
   app-build:
-    needs: test-build
+    needs: tests
     uses: ./.github/workflows/build.yaml
     with:
       target-env: stage
