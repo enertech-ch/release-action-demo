@@ -5,10 +5,10 @@ on:
 
 jobs:
   test-build:
-    uses: ./.github/workflows/build.yaml
+    uses: ./.github/workflows/_build.yaml
     with:
       target-env: pipeline
 
   test:
     needs: test-build
-    uses: ./.github/workflows/test.yaml
+    uses: ./.github/workflows/_test.yaml
