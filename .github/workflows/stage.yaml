@@ -10,7 +10,7 @@ jobs:
     with:
       target-env: pipeline
 
-  test:
+  tests:
     needs: test-build
     uses: ./.github/workflows/test.yaml
 
