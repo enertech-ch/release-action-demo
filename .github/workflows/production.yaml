@@ -15,7 +15,7 @@ jobs:
     uses: ./.github/workflows/test.yaml
 
   app-build:
-    needs: tests
+    needs: test-build
     uses: ./.github/workflows/build.yaml
     with:
       target-env: production

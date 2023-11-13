@@ -8,13 +8,13 @@ on:
         required: true
       
 jobs:
-  build:
+  Deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Download the output from previous steps.
         uses: actions/download-artifact@v3
         with:
-          name: build-output
+          name: build-output-${{ target-env }}
           path: ${{ github.workspace }}
       - name: Do whatever you need
         run: |
