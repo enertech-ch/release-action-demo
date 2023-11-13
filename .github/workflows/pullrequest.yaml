@@ -4,7 +4,10 @@ on:
   pull_request:
 
 jobs:
-  - uses: ./.github/workflows/build.yaml
-    with:
-      target-env: pipeline
-  - uses: ./.github/workflows/test.yaml
+  build-test:
+    - uses: ./.github/workflows/build.yaml
+      with:
+        target-env: pipeline
+
+  test:
+    - uses: ./.github/workflows/test.yaml

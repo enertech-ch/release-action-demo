@@ -5,13 +5,20 @@ on:
     types: [ 'released' ]
 
 jobs:
-  - uses: ./.github/workflows/build.yaml
-    with:
-      target-env: pipeline
-  - uses: ./.github/workflows/test.yaml
-  - uses: ./.github/workflows/build.yaml
-    with:
-      target-env: production
-  - uses: ./.github/workflows/deploy.yaml
-    with:
-      target-env: production
+  build-test:
+    - uses: ./.github/workflows/build.yaml
+      with:
+        target-env: pipeline
+
+  test:
+    - uses: ./.github/workflows/test.yaml
+
+  build-prod:
+    - uses: ./.github/workflows/build.yaml
+      with:
+        target-env: production
+  
+  deploy:
+    - uses: ./.github/workflows/deploy.yaml
+      with:
+        target-env: production
