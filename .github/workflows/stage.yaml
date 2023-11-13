@@ -1,0 +1,27 @@
+name: Stage
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  test-build:
+    uses: ./.github/workflows/build.yaml
+    with:
+      target-env: pipeline
+
+  test:
+    needs: test-build
+    uses: ./.github/workflows/test.yaml
+
+  app-build:
+    needs: test-build
+    uses: ./.github/workflows/build.yaml
+    with:
+      target-env: stage
+  
+  deploy:
+    needs: app-build
+    uses: ./.github/workflows/deploy.yaml
+    with:
+      target-env: stage

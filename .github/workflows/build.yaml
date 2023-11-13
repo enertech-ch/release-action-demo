@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      target-env:
+        type: string
+        required: true
+      
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Do whatever you need
+        run: |
+          echo "Hello World! I'm running on [${{ inputs.target-env }}]." > myfile.txt;
+          echo "Build finished";
+      - name: Store the App directory
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-output-${{ inputs.target-env }}
+          path: ${{ github.workspace }}

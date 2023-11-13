@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      target-env:
+        type: string
+        required: true
+      
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the output from previous steps.
+        uses: actions/download-artifact@v3
+        with:
+          name: build-output-${{ inputs.target-env }}
+          path: ${{ github.workspace }}
+      - name: Do whatever you need
+        run: |
+          cat myfile.txt;
+          echo "Deploy finished";

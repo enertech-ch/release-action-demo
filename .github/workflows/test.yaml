@@ -1,0 +1,21 @@
+name: Test
+
+on:
+  workflow_call:
+      
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: redis:6.2-alpine
+    steps:
+      - name: Download the output from previous steps.
+        uses: actions/download-artifact@v3
+        with:
+          name: build-output-pipeline
+          path: ${{ github.workspace }}
+      - name: Do whatever you need
+        run: |
+          cat myfile.txt;
+          echo "Test finished";
