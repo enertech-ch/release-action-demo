@@ -4,11 +4,8 @@ on:
   workflow_call:
     inputs:
       target-env:
-        type: choice
+        type: string
         required: true
-        options:
-          - production
-          - stage
       
 jobs:
   build:
