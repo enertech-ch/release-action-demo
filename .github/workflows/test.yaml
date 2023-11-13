@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       db:
-        image: keinos/sqlite3:latest
+        image: redis:6.2-alpine
     steps:
       - name: Download the output from previous steps.
         uses: actions/download-artifact@v3
