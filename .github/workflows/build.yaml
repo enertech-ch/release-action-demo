@@ -20,5 +20,5 @@ jobs:
       - name: Store the App directory
         uses: actions/upload-artifact@v3
         with:
-          name: build-output-${{ target-env }}
+          name: build-output-${{ inputs.target-env }}
           path: ${{ github.workspace }}
