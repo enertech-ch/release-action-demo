@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      target-env:
+        type: choice
+        required: true
+        options:
+          - production
+          - stage
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the output from previous steps.
+        uses: actions/download-artifact@v3
+      - name: Do whatever you need
+        run: |
+          cat myfile.txt;
+          echo "Deploy finished";

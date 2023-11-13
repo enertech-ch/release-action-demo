@@ -1,0 +1,10 @@
+name: Pull Request
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  - uses: ./.github/workflows/_build.yaml
+    with:
+      target-env: pipeline
+  - uses: ./.github/workflows/_test.yaml
