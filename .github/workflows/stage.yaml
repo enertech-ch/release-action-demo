@@ -21,7 +21,7 @@ jobs:
       target-env: stage
   
   deploy:
-    needs: app-build
+    needs: [app-build, tests]
     uses: ./.github/workflows/deploy.yaml
     with:
       target-env: stage
